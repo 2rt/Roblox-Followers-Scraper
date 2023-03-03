@@ -3,20 +3,6 @@ from threading import Thread
 
 # config
 threadc = 5
-s = requests.session()
-proxy = set()
-
-with open("proxies.txt", "r") as f:
-    file_lines1 = f.readlines()
-    for line1 in file_lines1:
-        proxy.add(line1.strip())
-        
-proxies = {
-    'http': 'http://'+random.choice(list(proxy))
-}
-
-
-r = requests.get('http://www.roblox.com/',proxies=proxies)
 # main
 def getFollowers(userid):
     cursor = ''
