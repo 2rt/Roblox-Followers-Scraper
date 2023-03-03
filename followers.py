@@ -11,7 +11,7 @@ def getFollowers(userid):
     while 1:
         try:
             r = req.get(f'https://friends.roblox.com/v1/users/{userid}/followers?sortOrder=Asc&limit=100&cursor={cursor}').json()
-            followers.extend([x['name'] for x in r['data']])
+            followers.extend([x['name'] for x in r['data'] if x['isBanned'] == False])
             cursor = r['nextPageCursor']
             if not cursor: return followers
         except Exception as e:
